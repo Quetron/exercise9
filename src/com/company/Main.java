@@ -1,0 +1,73 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Contacts contact1 = new Email("Jerry", "JerryLovesCats@gmail.com");
+        Contacts contact2 = new Phone("Jimmy", "614-867-5309");
+
+        contact1.contact();
+        contact2.contact();
+    }
+}
+
+abstract class Contacts{
+    private String name;
+    abstract void contact();
+
+    public Contacts(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+class Email extends Contacts{
+    private String email;
+
+    public Email(String name, String email) {
+        super(name);
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    void contact() {
+        System.out.println("Name: " + super.getName() + " | Email: " + this.email);
+    }
+}
+
+class Phone extends Contacts{
+    private String phoneNumber;
+
+    public Phone(String name, String phoneNumber) {
+        super(name);
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    void contact() {
+        System.out.println("Name: " + super.getName() + " | Phone number: " + this.phoneNumber);
+    }
+}
